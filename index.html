@@ -1,0 +1,696 @@
+
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="OP-Management am Universitätsklinikum Leipzig – Zentral-OP, Zentrum für Frauen- und Kindermedizin, Kopfklinik, Zentral-OP und Intergriertes Aufnahmezentrum." />
+<title>OP-Management | Universitätsklinikum Leipzig</title>
+<style>
+:root {
+  --brand-blue:       #007fbf;
+  --brand-blue-mid:   #1088c2;
+  --brand-blue-light: #e8f4fb;
+  --brand-blue-link:  #008ac9;
+  --brand-blue-grad-start: #1088c2;
+  --brand-blue-grad-end:   #35a1d3;
+  --brand-teal:       #00b0d3;
+  --brand-teal-light: #e0f5fa;
+  --brand-border:     #8fc7e3;
+  --brand-grey:       #636363;
+  --brand-grey-light: #f4f6f8;
+  --white:            #ffffff;
+  --text-dark:        #1a2535;
+  --text-mid:         #505050;
+  --font-book: 'Century Gothic', 'Trebuchet MS', sans-serif;
+  --font-bold: 'Century Gothic', 'Trebuchet MS', sans-serif;
+  --radius: 8px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 2px 8px rgba(0,127,191,0.10);
+  --shadow-md: 0 4px 18px rgba(0,127,191,0.16);
+  --transition: 0.22s ease;
+  --max-width: 1280px;
+}
+*, *::before, *::after { box-sizing: border-box; margin:0; padding:0; }
+html { scroll-behavior: smooth; font-size:16px; }
+body { font-family: var(--font-book); color: var(--text-dark); background: var(--white); line-height:1.65; -webkit-font-smoothing: antialiased; }
+h1,h2,h3,h4,h5,h6 { font-family: var(--font-bold); }
+a { color: var(--brand-blue-link); text-decoration:none; }
+a:hover { text-decoration: underline; color: var(--brand-blue); }
+img { display:block; max-width:100%; height:auto; }
+ul { list-style:none; }
+section { scroll-margin-top:80px; }
+.skip-link { position:absolute; left:-9999px; top:4px; z-index:9999; background: var(--brand-blue); color:var(--white); padding:8px 16px; border-radius: var(--radius); }
+.skip-link:focus { left:4px; }
+
+.site-header { background:#ffffff; border-bottom:3px solid var(--brand-blue-mid); position:sticky; top:0; z-index:800; box-shadow:0 2px 12px rgba(0,0,0,0.12); }
+.header-top { display:flex; align-items:center; justify-content:space-between; max-width:var(--max-width); margin:0 auto; padding:0 24px; height:68px; }
+.logo-area { display:flex; align-items:center; gap:12px; }
+.logo-badge { width:44px; height:44px; background:var(--brand-blue); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.logo-badge span { font-size:0.95rem; font-weight:800; color:var(--white); letter-spacing:-0.03em; }
+.logo-wordmark { display:flex; flex-direction:column; line-height:1.15; }
+.logo-wordmark .brand-name { font-size:1.02rem; font-weight:700; color: var(--text-dark); }
+.logo-wordmark .brand-sub { font-size:0.75rem; font-weight:400; color: var(--brand-grey); }
+.header-actions { display:flex; align-items:center; gap:12px; }
+.career-btn { background: var(--brand-teal); color: var(--white); padding:9px 18px; border-radius: var(--radius); font-size:0.85rem; font-weight:600; display:flex; align-items:center; gap:6px; transition: var(--transition); }
+.career-btn:hover { background:#008fac; text-decoration:none; }
+.hamburger { display:none; background:none; border:none; cursor:pointer; color: var(--brand-blue); padding:6px; }
+.hamburger svg { width:26px; height:26px; }
+
+.main-nav { background: var(--brand-blue); }
+.main-nav ul { display:flex; max-width:var(--max-width); margin:0 auto; padding:0 24px; gap:2px; flex-wrap:wrap; }
+.main-nav li a { display:block; color:rgba(255,255,255,0.88); padding:11px 14px; font-size:0.8rem; font-weight:500; white-space:nowrap; transition:var(--transition); border-bottom:2px solid transparent; }
+.main-nav li a:hover, .main-nav li a.active { color:var(--white); border-bottom-color: var(--brand-teal); text-decoration:none; }
+
+.hero { position:relative; min-height:460px; background:linear-gradient(135deg,#005a8e 0%, var(--brand-blue-mid) 45%, var(--brand-teal) 100%); display:flex; align-items:center; overflow:hidden; }
+.hero-content { position:relative; z-index:2; max-width:var(--max-width); margin:0 auto; padding:60px 24px; width:100%; }
+.hero-eyebrow { display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.25); color:rgba(255,255,255,0.9); padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:20px; }
+.hero-eyebrow .dot { width:6px; height:6px; border-radius:50%; background:var(--brand-teal); }
+.hero h1 { font-size:clamp(1.6rem,3.4vw,2.5rem); font-weight:800; color:var(--white); line-height:1.2; max-width:760px; margin-bottom:16px; }
+.hero-sub { font-size:1.02rem; color:rgba(255,255,255,0.85); max-width:640px; line-height:1.6; margin-bottom:30px; }
+.hero-cta-row { display:flex; gap:14px; flex-wrap:wrap; margin-bottom: 34px;}
+.btn-primary { background:linear-gradient(45deg,var(--brand-blue-grad-start),var(--brand-blue-grad-end)); color:var(--white); padding:13px 26px; border-radius:var(--radius); font-weight:600; font-size:0.95rem; transition:var(--transition); display:inline-flex; align-items:center; gap:8px; border:none; cursor:pointer; }
+.btn-primary:hover { transform:translateY(-1px); box-shadow:var(--shadow-md); text-decoration:none; }
+.btn-outline { background:transparent; color:var(--white); padding:13px 26px; border-radius:var(--radius); font-weight:500; font-size:0.95rem; border:1.5px solid rgba(255,255,255,0.5); transition:var(--transition); display:inline-flex; align-items:center; gap:8px; cursor:pointer; }
+.btn-outline:hover { border-color:var(--white); background:rgba(255,255,255,0.1); text-decoration:none; }
+
+.leader-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; max-width:640px; }
+.leader-card { background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.25); border-radius:var(--radius); padding:14px 16px; display:flex; align-items:center; gap:12px; }
+.leader-photo { width:48px; height:48px; border-radius:50%; background:rgba(255,255,255,0.25); display:flex; align-items:center; justify-content:center; font-size:0.75rem; color:rgba(255,255,255,0.85); flex-shrink:0; text-align:center; }
+.leader-name { font-size:0.9rem; font-weight:700; color:var(--white); }
+.leader-role { font-size:0.75rem; color:rgba(255,255,255,0.75); }
+
+.section-container { max-width:var(--max-width); margin:0 auto; padding:0 24px; }
+.section-header { text-align:center; margin-bottom:40px; }
+.section-tag { display:inline-block; background:var(--brand-blue-light); color:var(--brand-blue); padding:4px 14px; border-radius:20px; font-size:0.75rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:12px; }
+.section-tag.teal { background:var(--brand-teal-light); color:var(--brand-teal); }
+h2.section-title { font-size:clamp(1.35rem,3vw,1.9rem); color:var(--brand-blue); font-weight:800; line-height:1.25; margin-bottom:12px; }
+.section-lead { font-size:0.98rem; color:var(--brand-grey); max-width:700px; margin:0 auto; line-height:1.7; }
+section.bg-white { background:var(--white); padding:64px 0; }
+section.bg-grey { background:var(--brand-grey-light); padding:64px 0; }
+
+.cards-grid { display:grid; gap:22px; }
+.cards-grid.cols-2 { grid-template-columns:repeat(2,1fr); }
+.cards-grid.cols-3 { grid-template-columns:repeat(3,1fr); }
+.cards-grid.cols-4 { grid-template-columns:repeat(4,1fr); }
+.card { background:var(--white); border-radius:var(--radius-lg); border:1.5px solid var(--brand-border); padding:24px; box-shadow:var(--shadow-sm); transition:var(--transition); }
+.card:hover { box-shadow:var(--shadow-md); transform:translateY(-2px); border-color:var(--brand-blue-mid); }
+.card h3 { font-size:1.02rem; color:var(--brand-blue); font-weight:700; margin-bottom:6px; }
+.card h4 { font-size:0.82rem; color:var(--brand-grey); font-weight:500; margin-bottom:10px; }
+.card p { font-size:0.88rem; color:var(--text-mid); line-height:1.6; }
+.card ul.info-list { margin-top:10px; }
+.card ul.info-list li { font-size:0.84rem; color:var(--text-mid); padding:5px 0; border-bottom:1px solid var(--brand-grey-light); display:flex; justify-content:space-between; gap:10px; }
+.card ul.info-list li:last-child { border-bottom:none; }
+.card ul.info-list li .lbl { font-weight:600; color:var(--brand-blue); }
+.tag-list { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
+.tag-list a { background:var(--brand-blue-light); color:var(--brand-blue); padding:4px 12px; border-radius:20px; font-size:0.76rem; font-weight:600; }
+.tag-list a:hover { background:var(--brand-teal-light); color:var(--brand-teal); text-decoration:none; }
+
+.placeholder-note { display:inline-flex; align-items:center; gap:6px; background:#fff6e0; color:#8a6d00; border:1px dashed #d8b74a; padding:4px 12px; border-radius:20px; font-size:0.72rem; font-weight:600; margin-top:8px; }
+
+.org-chart { background:var(--white); border-radius:var(--radius-lg); padding:32px; box-shadow:var(--shadow-sm); overflow-x:auto; }
+.org-level { display:flex; justify-content:center; gap:14px; flex-wrap:wrap; margin-bottom:12px; }
+.org-root { background:var(--brand-blue-mid); color:var(--white); padding:12px 22px; border-radius:var(--radius); font-weight:700; font-size:0.88rem; text-align:center; }
+.org-connector { width:2px; background:var(--brand-teal); height:18px; margin:0 auto; }
+.org-branch { flex:1; min-width:200px; max-width:260px; border:2px solid var(--brand-border); border-top:3px solid var(--brand-teal); border-radius:var(--radius); overflow:hidden; }
+.org-branch-title { background:var(--brand-blue-light); padding:9px 12px; font-size:0.8rem; font-weight:700; color:var(--brand-blue); }
+.org-branch p { padding:10px 12px; font-size:0.8rem; color:var(--text-mid); }
+
+.team-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.team-card { background:var(--white); border:1.5px solid var(--brand-border); border-radius:var(--radius-lg); padding:18px; text-align:center; transition:var(--transition); }
+.team-card:hover { border-color:var(--brand-teal); box-shadow:var(--shadow-sm); }
+.team-photo { width:56px; height:56px; border-radius:50%; background:var(--brand-blue-light); margin:0 auto 10px; display:flex; align-items:center; justify-content:center; font-size:0.68rem; color:var(--brand-blue); text-align:center; }
+.team-card h4 { font-size:0.86rem; font-weight:700; color:var(--brand-blue); margin-bottom:4px; }
+.team-card p { font-size:0.75rem; color:var(--brand-grey); line-height:1.4; }
+
+table.ata-table { width:100%; border-collapse:collapse; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-sm); margin-top:16px; font-size:0.85rem; }
+table.ata-table thead tr { background:var(--brand-blue); color:var(--white); }
+table.ata-table th { padding:10px 14px; text-align:left; font-weight:600; }
+table.ata-table td { padding:9px 14px; color:var(--text-mid); border-bottom:1px solid var(--brand-border); }
+table.ata-table tbody tr:nth-child(even) { background:var(--brand-grey-light); }
+table.ata-table tbody tr.total td { font-weight:700; color:var(--brand-blue); border-top:2px solid var(--brand-blue-mid); }
+
+.career-section { background:linear-gradient(135deg,#006b65 0%, var(--brand-teal) 100%); padding:44px 0; }
+.career-inner { max-width:var(--max-width); margin:0 auto; padding:0 24px; display:grid; grid-template-columns:1fr 1.4fr; gap:36px; align-items:center; }
+.career-title { color:var(--white); font-size:1.4rem; font-weight:800; }
+.career-sub { color:rgba(255,255,255,0.85); font-size:0.9rem; margin-top:6px; }
+.career-btn2 { background:var(--white); color:var(--brand-teal); padding:12px 24px; border-radius:var(--radius); font-weight:700; font-size:0.92rem; display:inline-flex; align-items:center; gap:8px; transition:var(--transition); }
+.career-btn2:hover { background:var(--brand-teal-light); text-decoration:none; }
+
+.contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:start; }
+.map-placeholder { background:var(--brand-blue-light); border-radius:var(--radius-lg); border:1.5px solid var(--brand-border); min-height:240px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; color:var(--brand-grey); text-align:center; padding:20px; }
+
+.site-footer { background:#0c3a52; color:rgba(255,255,255,0.75); padding:44px 0 0; }
+.footer-grid { max-width:var(--max-width); margin:0 auto; padding:0 24px; display:grid; grid-template-columns:2fr 1fr 1fr; gap:32px; margin-bottom:32px; }
+.footer-col h5 { font-size:0.8rem; font-weight:700; color:var(--white); margin-bottom:12px; letter-spacing:0.06em; text-transform:uppercase; }
+.footer-col ul li { margin-bottom:8px; }
+.footer-col ul li a { font-size:0.82rem; color:rgba(255,255,255,0.65); }
+.footer-col ul li a:hover { color:var(--white); text-decoration:none; }
+.footer-brand p { font-size:0.82rem; max-width:300px; line-height:1.6; }
+.footer-bottom { border-top:1px solid rgba(255,255,255,0.15); max-width:var(--max-width); margin:0 auto; padding:16px 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:0.76rem; }
+.footer-legal { display:flex; gap:16px; }
+.footer-legal a { font-size:0.76rem; color:rgba(255,255,255,0.6); }
+
+#cookie-banner { position:fixed; bottom:0; left:0; right:0; z-index:9000; background:rgba(10,25,40,0.97); border-top:3px solid var(--brand-teal); padding:16px 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; }
+#cookie-banner p { font-size:0.82rem; color:rgba(255,255,255,0.85); max-width:680px; line-height:1.5; }
+.cookie-btns { display:flex; gap:10px; }
+.btn-cookie-accept { background:var(--brand-teal); color:var(--white); padding:8px 18px; border-radius:var(--radius); font-size:0.82rem; font-weight:600; border:none; cursor:pointer; }
+.btn-cookie-settings { background:transparent; color:rgba(255,255,255,0.75); padding:8px 18px; border-radius:var(--radius); font-size:0.82rem; border:1px solid rgba(255,255,255,0.25); cursor:pointer; }
+
+#back-to-top { position:fixed; bottom:24px; right:24px; z-index:800; width:44px; height:44px; background:var(--brand-blue); color:var(--white); border-radius:50%; border:none; cursor:pointer; font-size:1.1rem; box-shadow:var(--shadow-md); display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity 0.3s; }
+#back-to-top.visible { opacity:1; }
+
+.accordion { border:1.5px solid var(--brand-border); border-radius:var(--radius-lg); overflow:hidden; }
+.accordion-item { border-bottom:1px solid var(--brand-border); }
+.accordion-item:last-child { border-bottom:none; }
+.accordion-btn { width:100%; display:flex; align-items:center; gap:16px; padding:16px 20px; background:var(--white); border:none; cursor:pointer; text-align:left; transition:var(--transition); }
+.accordion-btn:hover { background:var(--brand-grey-light); }
+.accordion-btn.open { background:var(--brand-blue-light); }
+.acc-title { flex:1; font-size:0.95rem; font-weight:700; color:var(--brand-blue); }
+.acc-chevron { font-size:0.8rem; color:var(--brand-grey); transition:transform 0.25s; }
+.accordion-btn.open .acc-chevron { transform:rotate(180deg); }
+.accordion-body { display:none; padding:0 20px 20px; background:var(--brand-grey-light); }
+.accordion-body.open { display:block; }
+.accordion-body p, .accordion-body li { font-size:0.88rem; color:var(--text-mid); line-height:1.7; }
+.accordion-body ul { margin-top:8px; }
+.accordion-body li { padding:4px 0; }
+.accordion-body li::before { content:'› '; color:var(--brand-teal); font-weight:700; }
+
+@media (max-width:1024px) {
+  .footer-grid { grid-template-columns:1fr 1fr; }
+  .team-grid { grid-template-columns:repeat(2,1fr); }
+  .cards-grid.cols-3, .cards-grid.cols-4 { grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width:768px) {
+  .main-nav { display:none; } .main-nav.open { display:block; }
+  .main-nav ul { flex-direction:column; padding:8px 16px; }
+  .hamburger { display:block; }
+  .hero { min-height:auto; } .hero-content { padding:40px 20px; } .hero h1 { font-size:1.4rem; }
+  .leader-grid { grid-template-columns:1fr; }
+  .cards-grid.cols-2, .cards-grid.cols-3, .cards-grid.cols-4 { grid-template-columns:1fr; }
+  .team-grid { grid-template-columns:1fr; }
+  .career-inner, .contact-grid { grid-template-columns:1fr; }
+  .footer-grid { grid-template-columns:1fr; }
+  #cookie-banner { flex-direction:column; }
+  table.ata-table { font-size:0.76rem; }
+}
+:focus-visible { outline:3px solid var(--brand-teal); outline-offset:3px; border-radius:3px; }
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation:none !important; transition:none !important; } }
+.sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; }
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
+
+<div id="cookie-banner" role="region" aria-label="Cookie-Einstellungen">
+  <p>Diese Website verwendet Cookies. Keine Weitergabe an Dritte.
+    <a href="#datenschutz" style="color:#00b0d3;">Datenschutzerklärung</a>
+  </p>
+  <div class="cookie-btns">
+    <button class="btn-cookie-settings" onclick="document.getElementById('cookie-banner').remove()">Einstellungen</button>
+    <button class="btn-cookie-accept" onclick="document.getElementById('cookie-banner').remove()">Alle akzeptieren</button>
+  </div>
+</div>
+
+<header class="site-header" role="banner">
+  <div class="header-top">
+    <div class="logo-area">
+      <div class="logo-badge" aria-hidden="true"><span>UKL</span></div>
+      <div class="logo-wordmark">
+        <span class="brand-name">OP-Management</span>
+        <span class="brand-sub">Universitätsklinikum Leipzig</span>
+      </div>
+    </div>
+    <div class="header-actions">
+      <a href="#karriere" class="career-btn" aria-label="Zur Karriereseite">Karriere</a>
+      <button class="hamburger" aria-label="Navigation öffnen" aria-expanded="false"
+        onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='false'?'true':'false'); document.querySelector('.main-nav').classList.toggle('open')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="main-nav" aria-label="Hauptnavigation">
+    <ul>
+      <li><a href="#vorstellung">Vorstellung</a></li>
+      <li><a href="#events">Events &amp; Kongress</a></li>
+      <li><a href="#fachbereiche">Fachbereiche</a></li>
+      <li><a href="#team">Unser Team</a></li>
+      <li><a href="#ausbildung">Aus- &amp; Weiterbildung</a></li>
+      <li><a href="#projekte">Projekte</a></li>
+      <li><a href="#geflüster">UKL-Geflüster</a></li>
+      <li><a href="#karriere">Karriere</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main-content">
+
+  <section class="hero" aria-label="Startbereich" id="vorstellung">
+    <div class="hero-content">
+      <div class="hero-eyebrow"><span class="dot"></span>OP-Management · UKL Leipzig</div>
+      <h1>Das OP-Management am Universitätsklinikum Leipzig</h1>
+      <p class="hero-sub">Wir bringen Erfahrung, Struktur und moderne digitale Prozesse zusammen – für einen OP-Betrieb, auf den sich Teams und Patient:innen verlassen können. Vier Bereiche. Ein starkes Miteinander.</p>
+      <div class="hero-cta-row">
+        <a href="#fachbereiche" class="btn-primary">Fachbereiche entdecken</a>
+        <a href="#karriere" class="btn-outline">Jetzt bewerben</a>
+      </div>
+      <div class="leader-grid">
+        <div class="leader-card">
+          <div class="leader-photo">Foto<br>folgt</div>
+          <div>
+            <div class="leader-name">Annett Huke</div>
+            <div class="leader-role">Pflegerische Leitung OP-Management &amp; OPM Zentral-OP OP-Funktionsdienst</div>
+          </div>
+        </div>
+        <div class="leader-card">
+          <div class="leader-photo">Foto<br>folgt</div>
+          <div>
+            <div class="leader-name">Dr. Gerald Huschak</div>
+            <div class="leader-role">Ärztliche Leitung OP-Management</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white" aria-labelledby="highlights-title">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag">Highlights</div>
+        <h2 class="section-title" id="highlights-title">Aktuelles aus dem OP-Management</h2>
+        <p class="section-lead">wird noch ergänzt</p>
+      </div>
+      <div class="cards-grid cols-3">
+        <div class="card"><h3>Highlight</h3><p>wird noch ergänzt</p></div>
+        <div class="card"><h3>Highlight</h3><p>wird noch ergänzt</p></div>
+        <div class="card"><h3>Highlight</h3><p>wird noch ergänzt</p></div>
+      </div>
+      <div style="text-align:center;margin-top:24px;">
+        <span class="placeholder-note">OP-Kennzahlen (grafisch) folgen – Freigabe durch Dr. Huschak steht noch aus</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-grey" aria-labelledby="videos-title">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag teal">Einblicke</div>
+        <h2 class="section-title" id="videos-title">Videos aus dem OP-Alltag</h2>
+        <p class="section-lead">wird noch ergänzt</p>
+      </div>
+      <div class="cards-grid cols-3">
+        <div class="card"><div class="map-placeholder" style="min-height:140px;">▶ Video folgt</div></div>
+        <div class="card"><div class="map-placeholder" style="min-height:140px;">▶ Video folgt</div></div>
+        <div class="card"><div class="map-placeholder" style="min-height:140px;">▶ Video folgt</div></div>
+      </div>
+    </div>
+  </section>
+
+ <section class="bg-white" id="events" aria-labelledby="events-title">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag">Events</div>
+        <h2 class="section-title" id="events-title">OP-Kongress &amp; Veranstaltungen</h2>
+        <p class="section-lead">Wissen teilen, Netzwerke stärken, gemeinsam wachsen: Wir sind regelmäßig auf Fachkongressen und Veranstaltungen vertreten – als Vortragende, Teilnehmende und Gastgeber:innen.</p>
+      </div>
+      <div class="cards-grid cols-2">
+        <div class="card">
+          <div class="leader-photo">Foto<br>folgt</div>
+          <h3>[Name der Veranstaltung folgt]</h3>
+          <p>Unser Team im Austausch mit Kolleg:innen aus dem gesamten Bundesgebiet.</p>
+        </div>
+        <div class="card">
+          <div class="leader-photo">Foto<br>folgt</div>
+          <h3>[Name der Veranstaltung folgt]</h3>
+          <p>Impressionen von einer vergangenen Veranstaltung – gemeinsam Wissen weitergeben.</p>
+        </div>
+        <div class="card">
+          <span style="display:inline-block;background:#00b0d3;color:#fff;font-size:0.75rem;font-weight:600;padding:0.2rem 0.7rem;border-radius:999px;margin-bottom:0.6rem;">Demnächst verfügbar</span>
+          <h3>Nächster Termin folgt in Kürze</h3>
+          <p>Wir planen bereits die nächste Veranstaltung – Termine folgen in Kürze.</p>
+
+  <section class="bg-grey" id="fachbereiche" aria-labelledby="fachbereiche-title">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag teal">Fachbereiche</div>
+        <h2 class="section-title" id="fachbereiche-title">Vier Bereiche, ein OP-Management</h2>
+        <p class="section-lead">ZFK, Kopfklinik, Zentral-OP und IAZ arbeiten nach einem einheitlichen Muster – mit eigenem Profil, eigenen Teams und eigenen Schwerpunkten.</p>
+      </div>
+
+      <div class="cards-grid cols-2" style="margin-bottom:22px;">
+        <div class="card">
+          <h3>ZFK — OP &amp; Anästhesie</h3>
+          <h4>Zentrum für Frauen- und Kindermedizin</h4>
+          <ul class="info-list">
+            <li><span class="lbl">OP-Säle</span><span>2× Kinderchirurgie, 2× Gynäkologie, 1× Kreißsaal</span></li>
+            <li><span class="lbl">Mitarbeitende OP</span><span>26</span></li>
+            <li><span class="lbl">Mitarbeitende Anästhesie</span><span>18</span></li>
+            <li><span class="lbl">Leitung OP-Pflege</span><span>Mandy Gläser</span></li>
+            <li><span class="lbl">Leitung Anästhesiepflege</span><span>Anne-Kathrin Schultze</span></li>
+          </ul>
+          <p style="margin-top:12px;">Fachliche Besonderheiten, Zertifizierungen und Gründe, hier zu arbeiten, finden sich in den offiziellen Fachbereichsseiten:</p>
+          <div class="tag-list">
+            <a href="https://uniklinikum-leipzig.de/einrichtungen/kinderchirurgie" target="_blank" rel="noopener">Kinderchirurgie</a>
+            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/frauenheilkunde" target="_blank" rel="noopener">Frauenheilkunde</a>
+            <a href="https://karriere.uniklinikum-leipzig.de/UKL/job/Pflegefachkraft-Gesundheits-&-%28Kinder-%29-KrankenpflegerinOTA-ATA-%28mwd%29/618-de_DE" target="_blank" rel="noopener">Stellenangebot OTA/ATA</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Kopfklinik — OP &amp; Anästhesie</h3>
+          <h4>Augen-, MKG- und HNO-Chirurgie</h4>
+          <ul class="info-list">
+            <li><span class="lbl">Augenchirurgie</span><span>4 Säle</span></li>
+            <li><span class="lbl">MKG / Plastische Gesichtschirurgie</span><span>3 Säle + 2 ambulant</span></li>
+            <li><span class="lbl">HNO-Chirurgie</span><span>2 Säle</span></li>
+            <li><span class="lbl">Bereichsleitung</span><span>Constanze Drephal</span></li>
+            <li><span class="lbl">Teamleitung OP</span><span>Bettina Schröbel</span></li>
+            <li><span class="lbl">Teamleitung Anästhesie</span><span>Birgit Becher</span></li>
+          </ul>
+          <div class="tag-list">
+            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/mkg" target="_blank" rel="noopener">MKG-Chirurgie</a>
+            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/hno" target="_blank" rel="noopener">HNO</a>
+            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/zrnc/Seiten/klinik-und-poliklinik-fuer-hno.aspx" target="_blank" rel="noopener">Klinik &amp; Poliklinik für HNO</a>
+            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/augenheilkunde" target="_blank" rel="noopener">Augenheilkunde</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="cards-grid cols-2">
+        <div class="card">
+          <h3>Zentral-OP — OP &amp; Anästhesie</h3>
+          <h4>17 Säle, ein interdisziplinäres Zentrum</h4>
+          <ul class="info-list">
+            <li><span class="lbl">OP-Säle</span><span>17 (inkl. Hochpräzisions-Säle seit 2022)</span></li>
+            <li><span class="lbl">Mitarbeitende Anästhesiepflege</span><span>55</span></li>
+            <li><span class="lbl">Mitarbeitende OP-Pflege</span><span>wird noch geprüft</span></li>
+            <li><span class="lbl">Bereichsleitung</span><span>Annett Huke</span></li>
+            <li><span class="lbl">Bereichsleitung Anästhesie</span><span>Oksana Kasch</span></li>
+          </ul>
+          <p style="margin-top:12px;font-weight:600;color:var(--brand-blue);font-size:0.85rem;">Teamleitungen</p>
+          <ul class="info-list">
+            <li><span class="lbl">VTTG</span><span>Sr. Katharina</span></li>
+            <li><span class="lbl">OUP</span><span>Sr. Jacqueline</span></li>
+            <li><span class="lbl">Urologie</span><span>Sr. Daniela</span></li>
+            <li><span class="lbl">Neurochirurgie</span><span>Sr. Claudia</span></li>
+            <li><span class="lbl">Anästhesie</span><span>Pfl. Michael</span></li>
+          </ul>
+          <p style="margin-top:12px;">Im Zentral-OP operieren unter anderem:</p>
+          <div class="tag-list">
+            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/vttg/adipositas-metabolische-und-endokrine-chirurgie" target="_blank" rel="noopener">Adipositas-Chirurgie</a>
+            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/oup/arthroskopische-spezielle-gelenkchirurgie-sportverletzungen" target="_blank" rel="noopener">Arthroskopische &amp; Spezielle Gelenkchirurgie</a>
+            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/oup/plastische-%C3%A4sthetische-spezielle-handchirurgie" target="_blank" rel="noopener">Ästhetische Chirurgie</a>
+            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/vttg/viszeralchirurgie/viszeralchirurgie" target="_blank" rel="noopener">Bauchchirurgie</a>
+            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/vttg/gef%C3%A4%C3%9Fchirurgie" target="_blank" rel="noopener">Gefäßchirurgie</a>
+            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/vttg/hepatobili%C3%A4re-chirurgie-viszerale-transplantation" target="_blank" rel="noopener">Hepatobiliäre Chirurgie &amp; Transplantation</a>
+            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/neurochirurgie" target="_blank" rel="noopener">Neurochirurgie</a>
+            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/oup" target="_blank" rel="noopener">Orthopädie, Unfallchirurgie &amp; Plastische Chirurgie</a>
+            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/vttg/thoraxchirurgie" target="_blank" rel="noopener">Thoraxchirurgie</a>
+            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/oup/unfallchirurgie" target="_blank" rel="noopener">Unfallchirurgie</a>
+            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/vttg" target="_blank" rel="noopener">VTTG</a>
+            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/oup/wirbels%C3%A4ulenchirurgie" target="_blank" rel="noopener">Wirbelsäulenchirurgie</a>
+            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/zrnc/beteiligte-kliniken-und-institute" target="_blank" rel="noopener">Zentrum für roboterassistierte &amp; navigierte Chirurgie</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>IAZ — OP &amp; Anästhesie</h3>
+          <h4>Integriertes Aufnahmezentrum (AOP + Same Day Surgery)</h4>
+          <p>Das IAZ übernimmt die zentrale Steuerung und Vorbereitung aller ambulanten und stationären OP-Patient:innen, damit die Abläufe im Saal reibungslos funktionieren.</p>
+          <ul class="info-list" style="margin-top:12px;">
+            <li><span class="lbl">Patientenaufnahme</span><span>Administrativ &amp; pflegerisch</span></li>
+            <li><span class="lbl">OP-Vorbereitung</span><span>Unterlagen, Aufklärung, Nüchternheit, Labor, Medikation, Identität, Markierung</span></li>
+            <li><span class="lbl">Patientenflusssteuerung</span><span>Übergabe an OP-Team, pünktliche Bereitstellung</span></li>
+            <li><span class="lbl">Kommunikationsschnittstelle</span><span>OP-Koordination, Chirurgie, Anästhesie, Pflege</span></li>
+            <li><span class="lbl">Qualitätssicherung</span><span>Vermeidung von Fehlern &amp; Verzögerungen</span></li>
+          </ul>
+          <ul class="info-list" style="margin-top:12px;">
+            <li><span class="lbl">Zugeordnete Fachbereiche</span><span>Alle hausinternen außer MKG, HNO, Augen-OP</span></li>
+            <li><span class="lbl">Plätze</span><span>13 mit Überwachung/Aufwachraum + 4 ohne Überwachung</span></li>
+            <li><span class="lbl">Mitarbeitende OP-Pflege</span><span>11 (inkl. Prämedikation)</span></li>
+            <li><span class="lbl">Mitarbeitende Anästhesiepflege</span><span>14 (inkl. Prämedikation)</span></li>
+            <li><span class="lbl">Leitung</span><span>Melanie Burgold</span></li>
+          </ul>
+          <p style="margin-top:12px;font-weight:600;color:var(--brand-blue);font-size:0.85rem;">Was das IAZ besonders macht</p>
+          <ul class="info-list">
+            <li>Montag bis Freitag</li>
+            <li>Familiäres Setting</li>
+            <li>Hoher Servicegedanke</li>
+            <li>Patient:innen gehen in der Regel am selben Tag wieder nach Hause</li>
+            <li>Von Aufnahme bis Entlassung an einem Ort</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="career-section" id="karriere" aria-labelledby="karriere-title">
+    <div class="career-inner">
+      <div>
+        <div class="career-title" id="karriere-title">Werden Sie Teil unseres Teams</div>
+        <div class="career-sub">Wir suchen engagierte OTA, ATA und Pflegefachkräfte für alle vier Bereiche des OP-Managements.</div>
+      </div>
+      <div>
+        <a class="career-btn2" href="https://karriere.uniklinikum-leipzig.de/UKL/job/Pflegefachkraft-Gesundheits-&-%28Kinder-%29-KrankenpflegerinOTA-ATA-%28mwd%29/618-de_DE" target="_blank" rel="noopener">Zum Bewerbungsportal →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white" id="team" aria-labelledby="team-title">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag">Struktur</div>
+        <h2 class="section-title" id="team-title">Unser Team</h2>
+        <p class="section-lead">Leitungsstruktur des OP-Managements – hierarchisch von oben nach unten.</p>
+      </div>
+      <div class="org-chart">
+        <div class="org-level"><div class="org-root">Dr. Gerald Huschak — Ärztliche Leitung OP-Management</div></div>
+        <div class="org-connector"></div>
+        <div class="org-level"><div class="org-root">Annett Huke — Pflegerische Leitung OP-Management &amp; OPM Zentral-OP OP-Funktionsdienst</div></div>
+        <div class="org-connector"></div>
+        <div class="org-level">
+          <div class="org-branch"><div class="org-branch-title">OPM DFKM</div><p>Kathrin Piegeler</p></div>
+          <div class="org-branch"><div class="org-branch-title">Team OPM OP-Funktionsdienst</div><p>Mandy Gläser</p></div>
+        </div>
+        <p style="text-align:center;margin-top:16px;"><span class="placeholder-note">Organigramm wird laufend aktualisiert und final geprüft</span></p>
+      </div>
+
+      <div class="team-grid" style="margin-top:32px;">
+        <div class="team-card"><div class="team-photo">Foto folgt</div><h4>Mandy Gläser</h4><p>Leitung OP-Pflege, ZFK</p></div>
+        <div class="team-card"><div class="team-photo">Foto folgt</div><h4>Anne-Kathrin Schultze</h4><p>Leitung Anästhesiepflege, ZFK</p></div>
+        <div class="team-card"><div class="team-photo">Foto folgt</div><h4>Constanze Drephal</h4><p>Bereichsleitung, Kopfklinik</p></div>
+        <div class="team-card"><div class="team-photo">Foto folgt</div><h4>Bettina Schröbel</h4><p>Teamleitung OP, Kopfklinik</p></div>
+        <div class="team-card"><div class="team-photo">Foto folgt</div><h4>Birgit Becher</h4><p>Teamleitung Anästhesie, Kopfklinik</p></div>
+        <div class="team-card"><div class="team-photo">Foto folgt</div><h4>Oksana Kasch</h4><p>Bereichsleitung Anästhesie, Zentral-OP</p></div>
+        <div class="team-card"><div class="team-photo">Foto folgt</div><h4>Melanie Burgold</h4><p>Leitung IAZ, IOZ &amp; Anästhesieambulanz</p></div>
+        <div class="team-card"><div class="team-photo">Foto folgt</div><h4>Kathrin Piegeler</h4><p>OPM DFKM</p></div>
+      </div>
+      <p style="text-align:center;margin-top:20px;"><span class="placeholder-note">Fotos aller Teammitglieder folgen nach Freigabe (Name, Funktion, Fachbereich)</span></p>
+    </div>
+  </section>
+
+  <section class="bg-grey" id="ausbildung" aria-labelledby="ausbildung-title">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag teal">Aus- &amp; Weiterbildung</div>
+        <h2 class="section-title" id="ausbildung-title">Nachwuchs im OP</h2>
+        <p class="section-lead">Zentrale Praxisanleitung und Ausbildungswege für OTA und ATA am UKL.</p>
+      </div>
+
+      <div class="cards-grid cols-2" style="margin-bottom:24px;">
+        <div class="card">
+          <h3>Zentrale Praxisanleitung</h3>
+          <ul class="info-list">
+            <li><span class="lbl">Ausbildungskoordination</span><span>Katrin Rosin</span></li>
+            <li><span class="lbl">Praxisanleiter ATA</span><span>Kristin Schlag, Christian Taubert</span></li>
+            <li><span class="lbl">Praxisanleiter OTA</span><span>Luisa Hünemeyer, Silvia Wedow, Christine Werner</span></li>
+          </ul>
+          <div class="tag-list">
+            <a href="https://uniklinikum-leipzig.de/einrichtungen/akademie/ausbildungskoordinatorin/unser-team" target="_blank" rel="noopener">Team Ausbildungskoordination</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Ansprechpersonen Bewerbung</h3>
+          <ul class="info-list">
+            <li><span class="lbl">OTA-Bewerbung</span><span>Yvonne Kolbig, Fachbereichsleitung</span></li>
+            <li><span class="lbl">ATA-Bewerbung</span><span>Yvonne Kolbig, Fachbereichsleitung</span></li>
+          </ul>
+          <div class="tag-list">
+            <a href="https://uniklinikum-leipzig.de/einrichtungen/akademie/Seiten/mbfs-operationstechnische-assistenz.aspx" target="_blank" rel="noopener">OTA-Ausbildung</a>
+            <a href="https://uniklinikum-leipzig.de/einrichtungen/akademie/Seiten/mbfs-anaesthesietechnische-assistenz.aspx" target="_blank" rel="noopener">ATA-Ausbildung</a>
+            <a href="https://karriere.uniklinikum-leipzig.de/UKL/job/Pflegefachkraft-Gesundheits-&-%28Kinder-%29-KrankenpflegerinOTA-ATA-%28mwd%29/618-de_DE" target="_blank" rel="noopener">Stellenangebot</a>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="color:var(--brand-blue);font-size:1.05rem;margin-bottom:10px;">Praktische Ausbildung zur ATA — Einsatzbereiche &amp; Stunden</h3>
+      <table class="ata-table">
+        <thead><tr><th>Einsatzbereich</th><th>Stunden</th></tr></thead>
+        <tbody>
+          <tr><td>Berufsspezifischer Orientierungseinsatz*</td><td>80</td></tr>
+          <tr><td>Anästhesie in der Viszeralchirurgie</td><td>280</td></tr>
+          <tr><td>Anästhesie in der Unfallchirurgie oder Orthopädie</td><td>280</td></tr>
+          <tr><td>Anästhesie in der Gynäkologie oder Urologie</td><td>220</td></tr>
+          <tr><td>Anästhesie im ambulanten Kontext</td><td>100</td></tr>
+          <tr><td>Aufwacheinheiten</td><td>240</td></tr>
+          <tr><td>Wahlpflichteinsätze (mind. 100 Std. je Disziplin)</td><td>400</td></tr>
+          <tr><td>Pflegepraktikum</td><td>120</td></tr>
+          <tr><td>Zentrale Sterilgutversorgung / Aufbereitungseinheit</td><td>80</td></tr>
+          <tr><td>Operationsdienst</td><td>140</td></tr>
+          <tr><td>Schmerzambulanz / Schmerzdienst</td><td>120</td></tr>
+          <tr><td>Notaufnahme und Ambulanz</td><td>200</td></tr>
+          <tr><td>Interventionelle Funktionseinheiten</td><td>160</td></tr>
+          <tr><td>Stunden zur freien Verteilung*</td><td>80</td></tr>
+          <tr class="total"><td>Gesamt</td><td>2.500</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.78rem;color:var(--brand-grey);margin-top:8px;">* Berufsspezifischer Orientierungseinsatz ist fakultativ; freiwerdende Stunden erhöhen die Stunden zur freien Verteilung. Quelle: Anlage 2 zu § 4 Absatz 2 Nummer 1 ATA-OTA-APrV.</p>
+
+      <div class="accordion" style="margin-top:28px;">
+        <div class="accordion-item">
+          <button class="accordion-btn" aria-expanded="false" aria-controls="acc-body-1" onclick="toggleAcc(this)">
+            <span class="acc-title">Warum im OP arbeiten?</span><span class="acc-chevron">▾</span>
+          </button>
+          <div class="accordion-body" id="acc-body-1"><p>wird noch ergänzt</p></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-btn" aria-expanded="false" aria-controls="acc-body-2" onclick="toggleAcc(this)">
+            <span class="acc-title">Häufige Vorurteile über die Arbeit im OP</span><span class="acc-chevron">▾</span>
+          </button>
+          <div class="accordion-body" id="acc-body-2"><p>wird noch ergänzt</p></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-btn" aria-expanded="false" aria-controls="acc-body-3" onclick="toggleAcc(this)">
+            <span class="acc-title">Karrierewege im OP</span><span class="acc-chevron">▾</span>
+          </button>
+          <div class="accordion-body" id="acc-body-3"><p>wird noch ergänzt</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white" id="projekte" aria-labelledby="projekte-title">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag">Projekte</div>
+        <h2 class="section-title" id="projekte-title">Initiativen im OP-Management</h2>
+        <p class="section-lead">wird noch ergänzt</p>
+      </div>
+      <div class="cards-grid cols-2">
+        <div class="card">
+          <h3>LIA-OP</h3>
+          <p>Lernen im Ausbildungsverbund im OP: weniger Berufsgruppen vertreten als auf Station, täglicher Wechsel der Fachdisziplin, gezielte Ausbildung im OP für zukünftiges Fachpersonal.</p>
+          <ul class="info-list" style="margin-top:12px;">
+            <li><span class="lbl">Ansprechperson</span><span>Christian Taubert, Fachgesundheits- und Krankenpfleger für Intensivpflege und Anästhesie, Praxisanleiter</span></li>
+            <li><span class="lbl">Erfolge</span><span>Auswertung läuft, überwiegend positives Feedback aller Beteiligten</span></li>
+          </ul>
+          <p style="margin-top:10px;"><span class="placeholder-note">Fotos &amp; Videos folgen</span></p>
+        </div>
+        <div class="card">
+          <h3>Willkommens-OP</h3>
+          <p>wird noch geprüft — Abstimmung mit Mandy Gläser und Bianca Kraatz läuft.</p>
+          <p style="margin-top:10px;"><span class="placeholder-note">Fotos &amp; Videos folgen</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-grey" id="geflüster" aria-labelledby="gefluester-title">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag teal">Social Media</div>
+        <h2 class="section-title" id="gefluester-title">UKL-Geflüster</h2>
+        <p class="section-lead">Unser Instagram-Format – locker, modern und mit Einblicken hinter die Kulissen des UKL.</p>
+      </div>
+      <div class="card" style="max-width:520px;margin:0 auto;text-align:center;">
+        <h3>@Uniklinikum_Leipzig</h3>
+        <p>Verantwortlich: Luise Gleinig und Lena Saalbach (derzeit im Mutterschutz), gemeinsam mit dem UKL-Team.</p>
+        <div class="tag-list" style="justify-content:center;">
+          <a href="https://www.instagram.com/Uniklinikum_Leipzig/related_profiles/" target="_blank" rel="noopener">Zum Instagram-Profil</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white" id="kontakt" aria-labelledby="kontakt-title">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag teal">Kontakt</div>
+        <h2 class="section-title" id="kontakt-title">So erreichen Sie das OP-Management</h2>
+        <p class="section-lead">wird noch ergänzt</p>
+      </div>
+      <div class="contact-grid">
+        <div class="cards-grid cols-2" style="gap:16px;">
+          <div class="card"><h3>Adresse</h3><p>wird noch ergänzt</p></div>
+          <div class="card"><h3>Telefon</h3><p>wird noch ergänzt</p></div>
+          <div class="card"><h3>E-Mail</h3><p>wird noch ergänzt</p></div>
+          <div class="card"><h3>Erreichbarkeit</h3><p>wird noch ergänzt</p></div>
+        </div>
+        <div class="map-placeholder" role="img" aria-label="Kartenansicht">
+          <span style="font-size:2rem;">📍</span>
+          <p>wird noch ergänzt</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<button id="back-to-top" aria-label="Zurück nach oben" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <p>OP-Management am Universitätsklinikum Leipzig — Zentrum für Frauen- und Kindermedizin, Kopfklinik, Zentral-OP und IAZ.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Seiten</h5>
+      <ul>
+        <li><a href="#fachbereiche">Fachbereiche</a></li>
+        <li><a href="#ausbildung">Aus- &amp; Weiterbildung</a></li>
+        <li><a href="#karriere">Karriere</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Kontakt</h5>
+      <ul>
+        <li><a href="#kontakt">Kontakt &amp; Anfahrt</a></li>
+        <li><a href="https://karriere.uniklinikum-leipzig.de/UKL/job/Pflegefachkraft-Gesundheits-&-%28Kinder-%29-KrankenpflegerinOTA-ATA-%28mwd%29/618-de_DE" target="_blank" rel="noopener">Bewerbungsportal</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Universitätsklinikum Leipzig — OP-Management. Alle Rechte vorbehalten.</p>
+    <nav class="footer-legal" aria-label="Rechtliche Hinweise">
+      <a href="#impressum">Impressum</a>
+      <a href="#datenschutz">Datenschutz</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+function toggleAcc(btn) {
+  const body = document.getElementById(btn.getAttribute('aria-controls'));
+  const isOpen = btn.classList.contains('open');
+  btn.classList.toggle('open', !isOpen);
+  btn.setAttribute('aria-expanded', String(!isOpen));
+  body.classList.toggle('open', !isOpen);
+}
+const btt = document.getElementById('back-to-top');
+window.addEventListener('scroll', () => btt.classList.toggle('visible', window.scrollY > 400));
+
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.main-nav a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id));
+    }
+  });
+}, { threshold: 0.2 });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
