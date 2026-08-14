@@ -98,6 +98,64 @@ section.bg-grey { background:var(--brand-grey-light); padding:64px 0; }
 .card h3 { font-size:1.02rem; color:var(--brand-blue); font-weight:700; margin-bottom:6px; }
 .card h4 { font-size:0.82rem; color:var(--brand-grey); font-weight:500; margin-bottom:10px; }
 .card p { font-size:0.88rem; color:var(--text-mid); line-height:1.6; }
+  .event-featured {
+  overflow: hidden;
+}
+
+.event-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.event-year,
+.event-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.event-year {
+  background: var(--brand-blue-light);
+  color: var(--brand-blue);
+}
+
+.event-status {
+  background: var(--brand-teal-light);
+  color: #007d97;
+}
+
+.event-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.event-gallery img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--brand-border);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.event-gallery img:hover {
+  transform: scale(1.03);
+  box-shadow: var(--shadow-sm);
+}
+
+@media (max-width: 480px) {
+  .event-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 .card ul.info-list { margin-top:10px; }
 .card ul.info-list li { font-size:0.84rem; color:var(--text-mid); padding:5px 0; border-bottom:1px solid var(--brand-grey-light); display:flex; justify-content:space-between; gap:10px; }
 .card ul.info-list li:last-child { border-bottom:none; }
@@ -316,21 +374,43 @@ table.ata-table tbody tr.total td { font-weight:700; color:var(--brand-blue); bo
         <p class="section-lead">Wissen teilen, Netzwerke stärken, gemeinsam wachsen: Wir sind regelmäßig auf Fachkongressen und Veranstaltungen vertreten – als Vortragende, Teilnehmende und Gastgeber:innen.</p>
       </div>
       <div class="cards-grid cols-2">
-        <div class="card">
-          <div class="leader-photo">Foto<br>folgt</div>
-          <h3>[Name der Veranstaltung folgt]</h3>
-          <p>Unser Team im Austausch mit Kolleg:innen aus dem gesamten Bundesgebiet.</p>
-        </div>
-        <div class="card">
-          <div class="leader-photo">Foto<br>folgt</div>
-          <h3>[Name der Veranstaltung folgt]</h3>
-          <p>Impressionen von einer vergangenen Veranstaltung – gemeinsam Wissen weitergeben.</p>
-        </div>
-         <h3>Nächster Termin folgt in Kürze</h3>
-          <p>Wir planen bereits die nächste Veranstaltung – Termine folgen in Kürze.</p>
-        <div class="card">
-          <span style="display:inline-block;background:#00b0d3;color:#fff;font-size:0.75rem;font-weight:600;padding:0.2rem 0.7rem;border-radius:999px;margin-bottom:0.6rem;">Demnächst verfügbar</span>
-        </div>
+  <div class="card event-featured">
+    <div class="event-card-top">
+      <span class="event-year">2025</span>
+      <span class="event-status">Rückblick</span>
+    </div>
+    <h3>OP-Kongress 2025</h3>
+    <p>Gemeinsam lernen, Wissen teilen und neue Impulse für den OP-Alltag mitnehmen: Eindrücke vom OP-Kongress 2025.</p>
+    <div class="event-gallery">
+      <img src="assets/images/IMG_0460.jpg" alt="Eindruck vom OP-Kongress 2025">
+      <img src="assets/images/IMG_0479-2.jpg" alt="Teilnehmende beim OP-Kongress 2025">
+      <img src="assets/images/IMG_0501-3.jpg" alt="Vortrag beim OP-Kongress 2025">
+      <img src="assets/images/IMG_0502-4.jpg" alt="Programm des OP-Kongresses 2025">
+      <img src="assets/images/IMG_0525-5.jpg" alt="Austausch beim OP-Kongress 2025">
+      <img src="assets/images/IMG_0561-6.jpg" alt="Workshop beim OP-Kongress 2025">
+      <img src="assets/images/IMG_0573-7.jpg" alt="Praxisübung beim OP-Kongress 2025">
+      <img src="assets/images/IMG_0588-8.jpg" alt="Teilnehmende im Gespräch beim OP-Kongress 2025">
+      <img src="assets/images/IMG_0603-9.jpg" alt="Hands-on Training beim OP-Kongress 2025">
+      <img src="assets/images/IMG_0606-10.jpg" alt="Teammoment beim OP-Kongress 2025">
+      <img src="assets/images/IMG_0616-11.jpg" alt="Fachvortrag beim OP-Kongress 2025">
+      <img src="assets/images/IMG_0620-12.jpg" alt="Übung mit Instrumenten beim OP-Kongress 2025">
+      <img src="assets/images/IMG_0633-13.jpg" alt="OP-Team beim OP-Kongress 2025">
+      <img src="assets/images/IMG_0644-14.jpg" alt="Diskussionsrunde beim OP-Kongress 2025">
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="leader-photo">Foto<br>folgt</div>
+    <h3>[Name der Veranstaltung folgt]</h3>
+    <p>Impressionen von einer vergangenen Veranstaltung – gemeinsam Wissen weitergeben.</p>
+  </div>
+
+  <div class="card">
+    <span style="display:inline-block;background:#00b0d3;color:#fff;font-size:0.75rem;font-weight:600;padding:0.2rem 0.7rem;border-radius:999px;margin-bottom:0.6rem;">Demnächst verfügbar</span>
+    <h3>Nächster Termin folgt in Kürze</h3>
+    <p>Wir planen bereits die nächste Veranstaltung – Termine folgen in Kürze.</p>
+  </div>
+</div>
         
   <section class="bg-grey" id="fachbereiche" aria-labelledby="fachbereiche-title">
     <div class="section-container">
