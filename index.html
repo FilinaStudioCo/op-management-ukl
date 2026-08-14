@@ -46,7 +46,7 @@ section { scroll-margin-top:80px; }
 .site-header { background:#ffffff; border-bottom:3px solid var(--brand-blue-mid); position:sticky; top:0; z-index:800; box-shadow:0 2px 12px rgba(0,0,0,0.12); }
 .header-top { display:flex; align-items:center; justify-content:space-between; max-width:var(--max-width); margin:0 auto; padding:0 24px; height:68px; }
 .logo-area { display:flex; align-items:center; gap:12px; }
-.logo-badge { width:44px; height:44px; background:var(--brand-blue); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.logo-badge { width:44px; height:44px; background:var(--brand-blue); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; overflow:hidden; }
 .logo-badge span { font-size:0.95rem; font-weight:800; color:var(--white); letter-spacing:-0.03em; }
 .logo-wordmark { display:flex; flex-direction:column; line-height:1.15; }
 .logo-wordmark .brand-name { font-size:1.02rem; font-weight:700; color: var(--text-dark); }
@@ -98,64 +98,17 @@ section.bg-grey { background:var(--brand-grey-light); padding:64px 0; }
 .card h3 { font-size:1.02rem; color:var(--brand-blue); font-weight:700; margin-bottom:6px; }
 .card h4 { font-size:0.82rem; color:var(--brand-grey); font-weight:500; margin-bottom:10px; }
 .card p { font-size:0.88rem; color:var(--text-mid); line-height:1.6; }
-  .event-featured {
-  overflow: hidden;
-}
 
-.event-card-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
-}
+.event-featured { overflow: hidden; }
+.event-card-top { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:12px; }
+.event-year, .event-status { display:inline-flex; align-items:center; padding:4px 10px; border-radius:999px; font-size:0.72rem; font-weight:700; }
+.event-year { background:var(--brand-blue-light); color:var(--brand-blue); }
+.event-status { background:var(--brand-teal-light); color:#007d97; }
+.event-gallery { display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; margin-top:16px; }
+.event-gallery img { width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:8px; border:1px solid var(--brand-border); transition:transform var(--transition), box-shadow var(--transition); }
+.event-gallery img:hover { transform:scale(1.03); box-shadow:var(--shadow-sm); }
+@media (max-width:480px) { .event-gallery { grid-template-columns:repeat(2, 1fr); } }
 
-.event-year,
-.event-status {
-  display: inline-flex;
-  align-items: center;
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 0.72rem;
-  font-weight: 700;
-}
-
-.event-year {
-  background: var(--brand-blue-light);
-  color: var(--brand-blue);
-}
-
-.event-status {
-  background: var(--brand-teal-light);
-  color: #007d97;
-}
-
-.event-gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  margin-top: 16px;
-}
-
-.event-gallery img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 8px;
-  border: 1px solid var(--brand-border);
-  transition: transform var(--transition), box-shadow var(--transition);
-}
-
-.event-gallery img:hover {
-  transform: scale(1.03);
-  box-shadow: var(--shadow-sm);
-}
-
-@media (max-width: 480px) {
-  .event-gallery {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 .card ul.info-list { margin-top:10px; }
 .card ul.info-list li { font-size:0.84rem; color:var(--text-mid); padding:5px 0; border-bottom:1px solid var(--brand-grey-light); display:flex; justify-content:space-between; gap:10px; }
 .card ul.info-list li:last-child { border-bottom:none; }
@@ -275,8 +228,8 @@ table.ata-table tbody tr.total td { font-weight:700; color:var(--brand-blue); bo
   <div class="header-top">
     <div class="logo-area">
       <div class="logo-badge" aria-hidden="true">
-  <img src="assets/images/ukl-logo.png" alt="" style="width:100%;height:100%;object-fit:contain;">
-</div>
+        <img src="assets/images/ukl-logo.png" alt="" style="width:100%;height:100%;object-fit:contain;">
+      </div>
       <div class="logo-wordmark">
         <span class="brand-name">OP-Management</span>
         <span class="brand-sub">Universitätsklinikum Leipzig</span>
@@ -366,7 +319,7 @@ table.ata-table tbody tr.total td { font-weight:700; color:var(--brand-blue); bo
     </div>
   </section>
 
- <section class="bg-white" id="events" aria-labelledby="events-title">
+  <section class="bg-white" id="events" aria-labelledby="events-title">
     <div class="section-container">
       <div class="section-header">
         <div class="section-tag">Events</div>
@@ -374,48 +327,46 @@ table.ata-table tbody tr.total td { font-weight:700; color:var(--brand-blue); bo
         <p class="section-lead">Wissen teilen, Netzwerke stärken, gemeinsam wachsen: Wir sind regelmäßig auf Fachkongressen und Veranstaltungen vertreten – als Vortragende, Teilnehmende und Gastgeber:innen.</p>
       </div>
       <div class="cards-grid cols-2">
-  <div class="card event-featured">
-    <div class="event-card-top">
-      <span class="event-year">2025</span>
-      <span class="event-status">Rückblick</span>
-    </div>
-    <h3>OP-Kongress 2025</h3>
-    <p>Gemeinsam lernen, Wissen teilen und neue Impulse für den OP-Alltag mitnehmen: Eindrücke vom OP-Kongress 2025.</p>
-    <div class="event-gallery">
-      <img src="assets/images/IMG_0460.jpg" alt="Eindruck vom OP-Kongress 2025">
-      <img src="assets/images/IMG_0479-2.jpg" alt="Teilnehmende beim OP-Kongress 2025">
-      <img src="assets/images/IMG_0501-3.jpg" alt="Vortrag beim OP-Kongress 2025">
-      <img src="assets/images/IMG_0502-4.jpg" alt="Programm des OP-Kongresses 2025">
-      <img src="assets/images/IMG_0525-5.jpg" alt="Austausch beim OP-Kongress 2025">
-      <img src="assets/images/IMG_0561-6.jpg" alt="Workshop beim OP-Kongress 2025">
-      <img src="assets/images/IMG_0573-7.jpg" alt="Praxisübung beim OP-Kongress 2025">
-      <img src="assets/images/IMG_0588-8.jpg" alt="Teilnehmende im Gespräch beim OP-Kongress 2025">
-      <img src="assets/images/IMG_0603-9.jpg" alt="Hands-on Training beim OP-Kongress 2025">
-      <img src="assets/images/IMG_0606-10.jpg" alt="Teammoment beim OP-Kongress 2025">
-      <img src="assets/images/IMG_0616-11.jpg" alt="Fachvortrag beim OP-Kongress 2025">
-      <img src="assets/images/IMG_0620-12.jpg" alt="Übung mit Instrumenten beim OP-Kongress 2025">
-      <img src="assets/images/IMG_0633-13.jpg" alt="OP-Team beim OP-Kongress 2025">
-      <img src="assets/images/IMG_0644-14.jpg" alt="Diskussionsrunde beim OP-Kongress 2025">
-    </div>
-  </div>
+        <div class="card event-featured">
+          <div class="event-card-top">
+            <span class="event-year">2025</span>
+            <span class="event-status">Rückblick</span>
+          </div>
+          <h3>OP-Kongress 2025</h3>
+          <p>Gemeinsam lernen, Wissen teilen und neue Impulse für den OP-Alltag mitnehmen: Eindrücke vom OP-Kongress 2025.</p>
+          <div class="event-gallery">
+            <img src="assets/images/IMG_0460.jpg" alt="Eindruck vom OP-Kongress 2025">
+            <img src="assets/images/IMG_0479-2.jpg" alt="Teilnehmende beim OP-Kongress 2025">
+            <img src="assets/images/IMG_0501-3.jpg" alt="Vortrag beim OP-Kongress 2025">
+            <img src="assets/images/IMG_0502-4.jpg" alt="Programm des OP-Kongresses 2025">
+            <img src="assets/images/IMG_0525-5.jpg" alt="Austausch beim OP-Kongress 2025">
+            <img src="assets/images/IMG_0561-6.jpg" alt="Workshop beim OP-Kongress 2025">
+            <img src="assets/images/IMG_0573-7.jpg" alt="Praxisübung beim OP-Kongress 2025">
+            <img src="assets/images/IMG_0588-8.jpg" alt="Teilnehmende im Gespräch beim OP-Kongress 2025">
+            <img src="assets/images/IMG_0603-9.jpg" alt="Hands-on Training beim OP-Kongress 2025">
+            <img src="assets/images/IMG_0606-10.jpg" alt="Teammoment beim OP-Kongress 2025">
+            <img src="assets/images/IMG_0616-11.jpg" alt="Fachvortrag beim OP-Kongress 2025">
+            <img src="assets/images/IMG_0620-12.jpg" alt="Übung mit Instrumenten beim OP-Kongress 2025">
+            <img src="assets/images/IMG_0633-13.jpg" alt="OP-Team beim OP-Kongress 2025">
+            <img src="assets/images/IMG_0644-14.jpg" alt="Diskussionsrunde beim OP-Kongress 2025">
+          </div>
+        </div>
 
-  <div class="card">
-    <div class="leader-photo">Foto<br>folgt</div>
-    <h3>[Name der Veranstaltung folgt]</h3>
-    <p>Impressionen von einer vergangenen Veranstaltung – gemeinsam Wissen weitergeben.</p>
-  </div>
+        <div class="card">
+          <div class="leader-photo">Foto<br>folgt</div>
+          <h3>[Name der Veranstaltung folgt]</h3>
+          <p>Impressionen von einer vergangenen Veranstaltung – gemeinsam Wissen weitergeben.</p>
+        </div>
 
-   <div class="card">
-    <span style="display:inline-block;background:#00b0d3;color:#fff;font-size:0.75rem;font-weight:600;padding:0.2rem 0.7rem;border-radius:999px;margin-bottom:0.6rem;">Demnächst verfügbar</span>
-    <h3>Nächster Termin folgt in Kürze</h3>
-    <p>Wir planen bereits die nächste Veranstaltung – Termine folgen in Kürze.</p>
-  </div>
-</div>
+        <div class="card">
+          <span style="display:inline-block;background:#00b0d3;color:#fff;font-size:0.75rem;font-weight:600;padding:0.2rem 0.7rem;border-radius:999px;margin-bottom:0.6rem;">Demnächst verfügbar</span>
+          <h3>Nächster Termin folgt in Kürze</h3>
+          <p>Wir planen bereits die nächste Veranstaltung – Termine folgen in Kürze.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="bg-grey" id="fachbereiche" aria-labelledby="fachbereiche-title">
-        
   <section class="bg-grey" id="fachbereiche" aria-labelledby="fachbereiche-title">
     <div class="section-container">
       <div class="section-header">
@@ -424,43 +375,42 @@ table.ata-table tbody tr.total td { font-weight:700; color:var(--brand-blue); bo
         <p class="section-lead">Vier Bereiche, eine gemeinsame Haltung: Jeder mit eigenem Profil, eigenem Team und eigenen Schwerpunkten – und doch nach denselben hohen Standards organisiert.</p>
       </div>
 
-          <div class="cards-grid cols-2">
-        <div class="card">
-          <h3>Zentral-OP — OP &amp; Anästhesie</h3>
-          <h4>17 Säle, ein interdisziplinäres Zentrum</h4>
-          <ul class="info-list">
-            <li><span class="lbl">OP-Säle</span><span>17 (inkl. Hochpräzisions-Säle seit 2022)</span></li>
-            <li><span class="lbl">Mitarbeitende Anästhesiepflege</span><span>55</span></li>
-            <li><span class="lbl">Mitarbeitende OP-Pflege</span><span>wird noch geprüft</span></li>
-            <li><span class="lbl">Bereichsleitung</span><span>Annett Huke</span></li>
-            <li><span class="lbl">Bereichsleitung Anästhesie</span><span>Oksana Kasch</span></li>
-          </ul>
-          <p style="margin-top:12px;font-weight:600;color:var(--brand-blue);font-size:0.85rem;">Teamleitungen</p>
-          <ul class="info-list">
-            <li><span class="lbl">VTTG</span><span>Sr. Katharina</span></li>
-            <li><span class="lbl">OUP</span><span>Sr. Jacqueline</span></li>
-            <li><span class="lbl">Urologie</span><span>Sr. Daniela</span></li>
-            <li><span class="lbl">Neurochirurgie</span><span>Sr. Claudia</span></li>
-            <li><span class="lbl">Anästhesie</span><span>Pfl. Michael</span></li>
-          </ul>
-          <p style="margin-top:12px;">Im Zentral-OP operieren unter anderem:</p>
-          <div class="tag-list">
-            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/vttg/adipositas-metabolische-und-endokrine-chirurgie" target="_blank" rel="noopener">Adipositas-Chirurgie</a>
-            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/oup/arthroskopische-spezielle-gelenkchirurgie-sportverletzungen" target="_blank" rel="noopener">Arthroskopische &amp; Spezielle Gelenkchirurgie</a>
-            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/oup/plastische-%C3%A4sthetische-spezielle-handchirurgie" target="_blank" rel="noopener">Ästhetische Chirurgie</a>
-            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/vttg/viszeralchirurgie/viszeralchirurgie" target="_blank" rel="noopener">Bauchchirurgie</a>
-            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/vttg/gef%C3%A4%C3%9Fchirurgie" target="_blank" rel="noopener">Gefäßchirurgie</a>
-            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/vttg/hepatobili%C3%A4re-chirurgie-viszerale-transplantation" target="_blank" rel="noopener">Hepatobiliäre Chirurgie &amp; Transplantation</a>
-            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/neurochirurgie" target="_blank" rel="noopener">Neurochirurgie</a>
-            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/oup" target="_blank" rel="noopener">Orthopädie, Unfallchirurgie &amp; Plastische Chirurgie</a>
-            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/vttg/thoraxchirurgie" target="_blank" rel="noopener">Thoraxchirurgie</a>
-            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/oup/unfallchirurgie" target="_blank" rel="noopener">Unfallchirurgie</a>
-            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/vttg" target="_blank" rel="noopener">VTTG</a>
-            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/oup/wirbels%C3%A4ulenchirurgie" target="_blank" rel="noopener">Wirbelsäulenchirurgie</a>
-            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/zrnc/beteiligte-kliniken-und-institute" target="_blank" rel="noopener">Zentrum für roboterassistierte &amp; navigierte Chirurgie</a>
-          </div>
+      <div class="card" style="margin-bottom:22px;">
+        <h3>Zentral-OP — OP &amp; Anästhesie</h3>
+        <h4>17 Säle, ein interdisziplinäres Zentrum</h4>
+        <ul class="info-list">
+          <li><span class="lbl">OP-Säle</span><span>17 (inkl. Hochpräzisions-Säle seit 2022)</span></li>
+          <li><span class="lbl">Mitarbeitende Anästhesiepflege</span><span>55</span></li>
+          <li><span class="lbl">Mitarbeitende OP-Pflege</span><span>wird noch geprüft</span></li>
+          <li><span class="lbl">Bereichsleitung</span><span>Annett Huke</span></li>
+          <li><span class="lbl">Bereichsleitung Anästhesie</span><span>Oksana Kasch</span></li>
+        </ul>
+        <p style="margin-top:12px;font-weight:600;color:var(--brand-blue);font-size:0.85rem;">Teamleitungen</p>
+        <ul class="info-list">
+          <li><span class="lbl">VTTG</span><span>Sr. Katharina</span></li>
+          <li><span class="lbl">OUP</span><span>Sr. Jacqueline</span></li>
+          <li><span class="lbl">Urologie</span><span>Sr. Daniela</span></li>
+          <li><span class="lbl">Neurochirurgie</span><span>Sr. Claudia</span></li>
+          <li><span class="lbl">Anästhesie</span><span>Pfl. Michael</span></li>
+        </ul>
+        <p style="margin-top:12px;">Im Zentral-OP operieren unter anderem:</p>
+        <div class="tag-list">
+          <a href="https://www.uniklinikum-leipzig.de/einrichtungen/vttg/adipositas-metabolische-und-endokrine-chirurgie" target="_blank" rel="noopener">Adipositas-Chirurgie</a>
+          <a href="https://www.uniklinikum-leipzig.de/einrichtungen/oup/arthroskopische-spezielle-gelenkchirurgie-sportverletzungen" target="_blank" rel="noopener">Arthroskopische &amp; Spezielle Gelenkchirurgie</a>
+          <a href="https://www.uniklinikum-leipzig.de/einrichtungen/oup/plastische-%C3%A4sthetische-spezielle-handchirurgie" target="_blank" rel="noopener">Ästhetische Chirurgie</a>
+          <a href="https://www.uniklinikum-leipzig.de/einrichtungen/vttg/viszeralchirurgie/viszeralchirurgie" target="_blank" rel="noopener">Bauchchirurgie</a>
+          <a href="https://www.uniklinikum-leipzig.de/einrichtungen/vttg/gef%C3%A4%C3%9Fchirurgie" target="_blank" rel="noopener">Gefäßchirurgie</a>
+          <a href="https://www.uniklinikum-leipzig.de/einrichtungen/vttg/hepatobili%C3%A4re-chirurgie-viszerale-transplantation" target="_blank" rel="noopener">Hepatobiliäre Chirurgie &amp; Transplantation</a>
+          <a href="https://www.uniklinikum-leipzig.de/einrichtungen/neurochirurgie" target="_blank" rel="noopener">Neurochirurgie</a>
+          <a href="https://www.uniklinikum-leipzig.de/einrichtungen/oup" target="_blank" rel="noopener">Orthopädie, Unfallchirurgie &amp; Plastische Chirurgie</a>
+          <a href="https://www.uniklinikum-leipzig.de/einrichtungen/vttg/thoraxchirurgie" target="_blank" rel="noopener">Thoraxchirurgie</a>
+          <a href="https://www.uniklinikum-leipzig.de/einrichtungen/oup/unfallchirurgie" target="_blank" rel="noopener">Unfallchirurgie</a>
+          <a href="https://www.uniklinikum-leipzig.de/einrichtungen/vttg" target="_blank" rel="noopener">VTTG</a>
+          <a href="https://www.uniklinikum-leipzig.de/einrichtungen/oup/wirbels%C3%A4ulenchirurgie" target="_blank" rel="noopener">Wirbelsäulenchirurgie</a>
+          <a href="https://www.uniklinikum-leipzig.de/einrichtungen/zrnc/beteiligte-kliniken-und-institute" target="_blank" rel="noopener">Zentrum für roboterassistierte &amp; navigierte Chirurgie</a>
         </div>
-            
+      </div>
+
       <div class="cards-grid cols-2" style="margin-bottom:22px;">
         <div class="card">
           <h3>ZFK — OP &amp; Anästhesie</h3>
@@ -500,31 +450,30 @@ table.ata-table tbody tr.total td { font-weight:700; color:var(--brand-blue); bo
         </div>
       </div>
 
-        <div class="card">
-          <h3>IAZ — OP &amp; Anästhesie</h3>
-          <h4>Integriertes Aufnahmezentrum (AOP + Same Day Surgery)</h4>
-          <p>Das IAZ übernimmt die zentrale Anlaufstelle und Vorbereitung aller ambulanten OP-Patient:innen, damit die Abläufe im Saal reibungslos funktionieren.</p>
-          <ul class="info-list" style="margin-top:12px;">
-            <li><span class="lbl">Patientenaufnahme</span><span>Administrativ &amp; pflegerisch</span></li>
-            <li><span class="lbl">OP-Vorbereitung</span><span>Unterlagen, Aufklärung, Nüchternheit, Labor, Medikation, Identität, Markierung</span></li>
-            <li><span class="lbl">Patientenflusssteuerung</span><span>Übergabe an OP-Team, pünktliche Bereitstellung</span></li>
-            <li><span class="lbl">Kommunikationsschnittstelle</span><span>OP-Koordination, Chirurgie, Anästhesie, Pflege</span></li>
-            <li><span class="lbl">Qualitätssicherung</span><span>Vermeidung von Fehlern &amp; Verzögerungen</span></li>
-          </ul>
-          <ul class="info-list" style="margin-top:12px;">
-            <li><span class="lbl">Zugeordnete Fachbereiche</span><span>Alle hausinternen außer MKG, HNO, Augen-OP</span></li>
-            <li><span class="lbl">Plätze</span><span>13 mit Überwachung/Aufwachraum + 4 ohne Überwachung</span></li>
-            <li><span class="lbl">Mitarbeitende OP-Pflege</span><span>11 (inkl. Prämedikation)</span></li>
-            <li><span class="lbl">Mitarbeitende Anästhesiepflege</span><span>14 (inkl. Prämedikation)</span></li>
-            <li><span class="lbl">Leitung</span><span>Melanie Burgold</span></li>
-          </ul>
-          <p style="margin-top:12px;font-weight:600;color:var(--brand-blue);font-size:0.85rem;">Was das IAZ besonders macht</p>
-          <ul class="info-list">
-           <li>Betrieb von Montag bis Freitag</li>
-<li>In der Regel noch am selben Tag zurück nach Hause</li>
-<li>Aufnahme, OP und Entlassung an einem Ort</li>
-          </ul>
-        </div>
+      <div class="card">
+        <h3>IAZ — OP &amp; Anästhesie</h3>
+        <h4>Integriertes Aufnahmezentrum (AOP + Same Day Surgery)</h4>
+        <p>Das IAZ übernimmt die zentrale Anlaufstelle und Vorbereitung aller ambulanten OP-Patient:innen, damit die Abläufe im Saal reibungslos funktionieren.</p>
+        <ul class="info-list" style="margin-top:12px;">
+          <li><span class="lbl">Patientenaufnahme</span><span>Administrativ &amp; pflegerisch</span></li>
+          <li><span class="lbl">OP-Vorbereitung</span><span>Unterlagen, Aufklärung, Nüchternheit, Labor, Medikation, Identität, Markierung</span></li>
+          <li><span class="lbl">Patientenflusssteuerung</span><span>Übergabe an OP-Team, pünktliche Bereitstellung</span></li>
+          <li><span class="lbl">Kommunikationsschnittstelle</span><span>OP-Koordination, Chirurgie, Anästhesie, Pflege</span></li>
+          <li><span class="lbl">Qualitätssicherung</span><span>Vermeidung von Fehlern &amp; Verzögerungen</span></li>
+        </ul>
+        <ul class="info-list" style="margin-top:12px;">
+          <li><span class="lbl">Zugeordnete Fachbereiche</span><span>Alle hausinternen außer MKG, HNO, Augen-OP</span></li>
+          <li><span class="lbl">Plätze</span><span>13 mit Überwachung/Aufwachraum + 4 ohne Überwachung</span></li>
+          <li><span class="lbl">Mitarbeitende OP-Pflege</span><span>11 (inkl. Prämedikation)</span></li>
+          <li><span class="lbl">Mitarbeitende Anästhesiepflege</span><span>14 (inkl. Prämedikation)</span></li>
+          <li><span class="lbl">Leitung</span><span>Melanie Burgold</span></li>
+        </ul>
+        <p style="margin-top:12px;font-weight:600;color:var(--brand-blue);font-size:0.85rem;">Was das IAZ besonders macht</p>
+        <ul class="info-list">
+          <li>Betrieb von Montag bis Freitag</li>
+          <li>In der Regel noch am selben Tag zurück nach Hause</li>
+          <li>Aufnahme, OP und Entlassung an einem Ort</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -533,7 +482,7 @@ table.ata-table tbody tr.total td { font-weight:700; color:var(--brand-blue); bo
     <div class="career-inner">
       <div>
         <div class="career-title" id="karriere-title">Werden Sie Teil unseres Teams</div>
-        <div class="career-sub">Wir suchen engagierte OTA, ATA und Pflegefachkräfte, die mit uns die OP-Versorgung am UKL gestalten wollen - allen vier Bereichen des OP-Managements.</div>
+        <div class="career-sub">Wir suchen engagierte OTA, ATA und Pflegefachkräfte, die mit uns die OP-Versorgung am UKL gestalten wollen – in allen vier Bereichen des OP-Managements.</div>
       </div>
       <div>
         <a class="career-btn2" href="https://karriere.uniklinikum-leipzig.de/UKL/job/Pflegefachkraft-Gesundheits-&-%28Kinder-%29-KrankenpflegerinOTA-ATA-%28mwd%29/618-de_DE" target="_blank" rel="noopener">Zum Bewerbungsportal →</a>
@@ -553,8 +502,7 @@ table.ata-table tbody tr.total td { font-weight:700; color:var(--brand-blue); bo
         <div class="org-connector"></div>
         <div class="org-level"><div class="org-root">Annett Huke — Pflegerische Leitung OP-Management &amp; OPM Zentral-OP OP-Funktionsdienst</div></div>
         <div class="org-connector"></div>
-        <div class="org-level">
-        </div>
+        <div class="org-level"></div>
         <p style="text-align:center;margin-top:16px;"><span class="placeholder-note">Organigramm wird laufend aktualisiert und final geprüft</span></p>
       </div>
 
@@ -573,45 +521,90 @@ table.ata-table tbody tr.total td { font-weight:700; color:var(--brand-blue); bo
     </div>
   </section>
 
-<div class="cards-grid cols-2" style="margin-bottom:24px;">
-  <div class="card">
-    <h3>Zentrale Praxisanleitung</h3>
-    <ul class="info-list">
-      <li><span class="lbl">Ausbildungskoordination</span><span>Katrin Rosin</span></li>
-      <li><span class="lbl">Praxisanleiter ATA</span><span>Kristin Schlag, Christian Taubert</span></li>
-      <li><span class="lbl">Praxisanleiter OTA</span><span>Luisa Hünemeyer, Silvia Wedow, Christine Werner</span></li>
-    </ul>
-    <div class="tag-list">
-      <a href="https://uniklinikum-leipzig.de/einrichtungen/akademie/ausbildungskoordinatorin/unser-team" target="_blank" rel="noopener">Team Ausbildungskoordination</a>
+  <section class="bg-grey" id="ausbildung" aria-labelledby="ausbildung-title">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag teal">Aus- &amp; Weiterbildung</div>
+        <h2 class="section-title" id="ausbildung-title">Nachwuchs im OP</h2>
+        <p class="section-lead">Vom ersten Ausbildungstag bis zur Leitungsposition: So begleiten wir Nachwuchs und erfahrenes Personal im OP am UKL.</p>
+      </div>
+
+      <div class="cards-grid cols-2" style="margin-bottom:24px;">
+        <div class="card">
+          <h3>Zentrale Praxisanleitung</h3>
+          <ul class="info-list">
+            <li><span class="lbl">Ausbildungskoordination</span><span>Katrin Rosin</span></li>
+            <li><span class="lbl">Praxisanleiter ATA</span><span>Kristin Schlag, Christian Taubert</span></li>
+            <li><span class="lbl">Praxisanleiter OTA</span><span>Luisa Hünemeyer, Silvia Wedow, Christine Werner</span></li>
+          </ul>
+          <div class="tag-list">
+            <a href="https://uniklinikum-leipzig.de/einrichtungen/akademie/ausbildungskoordinatorin/unser-team" target="_blank" rel="noopener">Team Ausbildungskoordination</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Ansprechperson Bewerbung</h3>
+          <ul class="info-list">
+            <li><span class="lbl">OTA und ATA-Bewerbung</span><span>Yvonne Kolbig, Fachbereichsleitung</span></li>
+          </ul>
+          <div class="tag-list">
+            <a href="https://uniklinikum-leipzig.de/einrichtungen/akademie/Seiten/mbfs-operationstechnische-assistenz.aspx" target="_blank" rel="noopener">OTA-Ausbildung</a>
+            <a href="https://uniklinikum-leipzig.de/einrichtungen/akademie/Seiten/mbfs-anaesthesietechnische-assistenz.aspx" target="_blank" rel="noopener">ATA-Ausbildung</a>
+            <a href="https://karriere.uniklinikum-leipzig.de/UKL/job/Pflegefachkraft-Gesundheits-&-%28Kinder-%29-KrankenpflegerinOTA-ATA-%28mwd%29/618-de_DE" target="_blank" rel="noopener">Stellenangebot</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Weiterbildung für erfahrenes Personal</h3>
+          <p>Wer bereits im OP oder in der Anästhesiepflege arbeitet, kann sich berufsbegleitend weiterentwickeln – fachlich und in Führungsrollen.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;">
+            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/akademie/Seiten/intensivpflege-anaesthesie-erwachsene.aspx" target="_blank" rel="noopener" style="background:#f0fbfd;border:1px solid #00b0d3;color:#00697f;padding:6px 14px;border-radius:999px;font-size:0.82rem;text-decoration:none;">Intensiv- &amp; Anästhesiepflege (Erw.)</a>
+            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/akademie/Seiten/intensivpflege-anaesthesie-kinder.aspx" target="_blank" rel="noopener" style="background:#f0fbfd;border:1px solid #00b0d3;color:#00697f;padding:6px 14px;border-radius:999px;font-size:0.82rem;text-decoration:none;">Intensiv- &amp; Anästhesiepflege (Kinder)</a>
+            <span style="background:#f5f5f5;border:1px solid #ccc;color:#555;padding:6px 14px;border-radius:999px;font-size:0.82rem;">Operationsdienst</span>
+            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/akademie/Seiten/weiterbildung-praxisanleitung.aspx" target="_blank" rel="noopener" style="background:#f0fbfd;border:1px solid #00b0d3;color:#00697f;padding:6px 14px;border-radius:999px;font-size:0.82rem;text-decoration:none;">Praxisanleitung</a>
+            <span style="background:#f5f5f5;border:1px solid #ccc;color:#555;padding:6px 14px;border-radius:999px;font-size:0.82rem;">Leitung Station/Funktionsdienst</span>
+            <span style="background:#f5f5f5;border:1px solid #ccc;color:#555;padding:6px 14px;border-radius:999px;font-size:0.82rem;">Pain Nurse</span>
+            <span style="background:#f5f5f5;border:1px solid #ccc;color:#555;padding:6px 14px;border-radius:999px;font-size:0.82rem;">Hausinterne Weiterbildung A/I</span>
+          </div>
+          <div class="tag-list">
+            <a href="https://www.uniklinikum-leipzig.de/einrichtungen/akademie/Seiten/fort-und-weiterbildung.aspx" target="_blank" rel="noopener">Alle Fort- und Weiterbildungen der Akademie</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion" style="margin-top:28px;">
+        <div class="accordion-item">
+          <button class="accordion-btn" aria-expanded="false" aria-controls="acc-body-1" onclick="toggleAcc(this)">
+            <span class="acc-title">Warum im OP arbeiten?</span><span class="acc-chevron">▾</span>
+          </button>
+          <div class="accordion-body" id="acc-body-1">
+            <p>Der OP ist der Ort, an dem Medizin am konzentriertesten ist. Hier zählt jede Sekunde, jede Rolle, jede Entscheidung – und genau das macht die Arbeit so besonders. Sie sind Teil eines Teams, das sich zu 100 % aufeinander verlassen kann, arbeiten an der Schnittstelle von Präzision und Menschlichkeit und sehen am Ende jeder Schicht, was Sie bewirkt haben. Kein Job für Zuschauer:innen – ein Job für alle, die mitgestalten wollen.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-btn" aria-expanded="false" aria-controls="acc-body-2" onclick="toggleAcc(this)">
+            <span class="acc-title">Häufige Vorurteile über die Arbeit im OP</span><span class="acc-chevron">▾</span>
+          </button>
+          <div class="accordion-body" id="acc-body-2">
+            <p><strong>Vorurteil:</strong> „Im OP ist es steril, kalt und unpersönlich.“<br>
+            <strong>Realität:</strong> Kaum ein Arbeitsplatz in der Klinik ist so teamgetrieben. Ohne Vertrauen, Kommunikation und gegenseitiges Verlassen-Können läuft im OP nichts.</p>
+            <p><strong>Vorurteil:</strong> „Im OP ist man nur eine Nummer, nicht mehr der Mensch dahinter.“<br>
+            <strong>Realität:</strong> Vor jeder OP sprechen wir mit den Patient:innen, erklären, beruhigen und begleiten sie persönlich – der Mensch steht im Mittelpunkt, nicht der Eingriff.</p>
+            <p><strong>Vorurteil:</strong> „OP-Arbeit ist reine Routine.“<br>
+            <strong>Realität:</strong> Jeder Eingriff, jedes Team, jeder Tag stellt neue Fragen. Wer Routine sucht, ist hier goldrichtig – aber nicht die Routine, die man erwartet.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-btn" aria-expanded="false" aria-controls="acc-body-3" onclick="toggleAcc(this)">
+            <span class="acc-title">Karrierewege im OP</span><span class="acc-chevron">▾</span>
+          </button>
+          <div class="accordion-body" id="acc-body-3">
+            <p>Der Einstieg ist nur der Anfang. Vom direkten Start als OTA, ATA oder Pflegefachkraft aus führen bei uns echte Entwicklungswege: zur Fachexpertin, zum Praxisanleiter, in Teamleitung oder Bereichsleitung – bis hin zu Positionen im OP-Management selbst. Wir begleiten diesen Weg aktiv mit Fort- und Weiterbildung, weil wir wissen: Wer bei uns bleibt, soll auch wachsen können.</p>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="card">
-    <h3>Ansprechperson Bewerbung</h3>
-    <ul class="info-list">
-      <li><span class="lbl">OTA und ATA-Bewerbung</span><span>Yvonne Kolbig, Fachbereichsleitung</span></li>
-    </ul>
-    <div class="tag-list">
-      <a href="https://uniklinikum-leipzig.de/einrichtungen/akademie/Seiten/mbfs-operationstechnische-assistenz.aspx" target="_blank" rel="noopener">OTA-Ausbildung</a>
-      <a href="https://uniklinikum-leipzig.de/einrichtungen/akademie/Seiten/mbfs-anaesthesietechnische-assistenz.aspx" target="_blank" rel="noopener">ATA-Ausbildung</a>
-      <a href="https://karriere.uniklinikum-leipzig.de/UKL/job/Pflegefachkraft-Gesundheits-&-%28Kinder-%29-KrankenpflegerinOTA-ATA-%28mwd%29/618-de_DE" target="_blank" rel="noopener">Stellenangebot</a>
-    </div>
-  </div>
-  <div class="card">
-  <h3>Weiterbildung für erfahrenes Personal</h3>
-  <p>Wer bereits im OP oder in der Anästhesiepflege arbeitet, kann sich berufsbegleitend weiterentwickeln – fachlich und in Führungsrollen.</p>
-  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;">
-    <a href="https://www.uniklinikum-leipzig.de/einrichtungen/akademie/Seiten/intensivpflege-anaesthesie-erwachsene.aspx" target="_blank" rel="noopener" style="background:#f0fbfd;border:1px solid #00b0d3;color:#00697f;padding:6px 14px;border-radius:999px;font-size:0.82rem;text-decoration:none;">Intensiv- &amp; Anästhesiepflege (Erw.)</a>
-    <a href="https://www.uniklinikum-leipzig.de/einrichtungen/akademie/Seiten/intensivpflege-anaesthesie-kinder.aspx" target="_blank" rel="noopener" style="background:#f0fbfd;border:1px solid #00b0d3;color:#00697f;padding:6px 14px;border-radius:999px;font-size:0.82rem;text-decoration:none;">Intensiv- &amp; Anästhesiepflege (Kinder)</a>
-    <span style="background:#f5f5f5;border:1px solid #ccc;color:#555;padding:6px 14px;border-radius:999px;font-size:0.82rem;">Operationsdienst</span>
-    <a href="https://www.uniklinikum-leipzig.de/einrichtungen/akademie/Seiten/weiterbildung-praxisanleitung.aspx" target="_blank" rel="noopener" style="background:#f0fbfd;border:1px solid #00b0d3;color:#00697f;padding:6px 14px;border-radius:999px;font-size:0.82rem;text-decoration:none;">Praxisanleitung</a>
-    <span style="background:#f5f5f5;border:1px solid #ccc;color:#555;padding:6px 14px;border-radius:999px;font-size:0.82rem;">Leitung Station/Funktionsdienst</span>
-    <span style="background:#f5f5f5;border:1px solid #ccc;color:#555;padding:6px 14px;border-radius:999px;font-size:0.82rem;">Pain Nurse</span>
-    <span style="background:#f5f5f5;border:1px solid #ccc;color:#555;padding:6px 14px;border-radius:999px;font-size:0.82rem;">Hausinterne Weiterbildung A/I</span>
-  </div>
-  <div class="tag-list">
-    <a href="https://www.uniklinikum-leipzig.de/einrichtungen/akademie/Seiten/fort-und-weiterbildung.aspx" target="_blank" rel="noopener">Alle Fort- und Weiterbildungen der Akademie</a>
-  </div>
-</div>
+  </section>
 
   <section class="bg-white" id="projekte" aria-labelledby="projekte-title">
     <div class="section-container">
@@ -665,22 +658,21 @@ table.ata-table tbody tr.total td { font-weight:700; color:var(--brand-blue); bo
       </div>
       <div class="contact-grid">
         <div class="cards-grid cols-2" style="gap:16px;">
-          <div class="card"><h3>Adresse</h3><p>Liebigstraße 20, Haus 4
-04103 Leipzig</p></div>
+          <div class="card"><h3>Adresse</h3><p>Liebigstraße 20, Haus 4<br>04103 Leipzig</p></div>
           <div class="card"><h3>Telefon</h3><p>0341 - 97 17122</p></div>
           <div class="card"><h3>E-Mail</h3><p>OP-Management@medizin.uni-leipzig.de</p></div>
-          </div>
-       <div class="map-placeholder">
-  <iframe
-    src="https://www.google.com/maps?q=Liebigstra%C3%9Fe+20,+04103+Leipzig&output=embed"
-    width="100%"
-    height="350"
-    style="border:0;border-radius:12px;"
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade"
-    title="Standort Universitätsklinikum Leipzig, Liebigstraße 20">
-  </iframe>
-</div>
+        </div>
+        <div class="map-placeholder">
+          <iframe
+            src="https://www.google.com/maps?q=Liebigstra%C3%9Fe+20,+04103+Leipzig&output=embed"
+            width="100%"
+            height="350"
+            style="border:0;border-radius:12px;"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Standort Universitätsklinikum Leipzig, Liebigstraße 20">
+          </iframe>
+        </div>
       </div>
     </div>
   </section>
